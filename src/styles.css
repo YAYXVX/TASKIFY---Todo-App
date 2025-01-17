@@ -1,0 +1,848 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+:root {
+  /* Global */
+  --white: #fff;
+  --blue: #2d6cea;
+  --blue_google: #4285F4;
+  --red: #EA4335;
+  --green: #34A853;
+  --yellow: #FBBC05;
+  --light-grey: #f2f2f2;
+  --dark-grey: #0a0a23;
+  --golden-yellow: #feac32;
+
+  /* Themes */
+  --bg-color-light: #ffffff;
+  --text-color-light: #ffffff;
+  --bg-color-dark: #36393e;
+  --bg-color-grey: #424549;
+  --text-color-dark: #000000;
+  --todo-app-dark: #36393e;
+  --todo-form-dark: #36393e;
+  --logo-bg-color-dark: #5f6368;
+  --individual-containers: #5f6368;
+  --scrollbar-thumb-light_mode-color: #888;
+  --scrollbar-thumb-dark_mode-color: #888;
+  --scrollbar-bg-light_mode-color: #fff;
+  --scrollbar-bg-dark_mode-color: #333;
+
+  /* Search bar themes */
+  --search-bar-color: #333;
+  --search-bg-color: #dcdcdc;
+  --search-icon-color: #bfbfbf;
+  --search-bar-bg-color: #5f6368;
+  --date-bg-dark_mode: #5f6368;
+  --date-bg-light_mode: #f2f2f2;
+  --date-txt-light_mode-color: #444746;
+  --date-txt-dark_mode-color: #ffffff;
+
+ /* Transition duration */
+  --transition-duration: 0.3s;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+
+body.dark {
+  background-color: var(--bg-color-grey);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* Header section of the page */
+header {
+    width: 100%;
+    height: 60px;
+    background-color: var(--light-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative; /* Make header the containing block for absolute positioning */
+    transition: background-color var(--transition-duration);
+  }
+
+  body.dark header {
+    background-color: var(--bg-color-dark); /* Use the dark theme background */
+  }
+  
+  .color-border {
+    height: 5px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(130deg, var(--red) 25%, var(--yellow) 25% 50%, var(--green) 50% 75%, var(--blue_google) 75% 100%);
+  }
+
+  h1 {
+    color: var(--blue);
+    font-family: sans-serif;
+    font-size: 1.5rem; /* Adjust font size */
+    line-height: 1.2; /* Adjust line height */
+    margin: 0; /* Remove extra margin */
+}
+
+
+#logo {
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+    height: auto; /* Allows it to adjust to the content */
+    padding: 10px; /* Add some inner spacing */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    transition: background-color var(--transition-duration);
+}
+
+body.dark #logo {
+    background-color: var(--logo-bg-color-dark);
+}
+
+
+
+
+/* Styling the search container */
+#search {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transform: translateX(-7.5%);
+  background-color: var(--search-bg-color);
+  padding: 5px 15px;
+  width: 500px; /* Adjust the width of the search bar */
+  margin: 0 20px; /* Ensures the search bar has space on both sides */
+
+  transition: background-color var(--transition-duration);
+}
+
+body.dark #search {
+    background-color: var(--search-bar-bg-color);
+}
+
+  
+  /* Search icon button (left-aligned, non-clickable) */
+  .search-icon-btn {
+    background: none;
+    border: none;
+    color: #393a3a;
+    cursor: pointer; /* Ensure it's not clickable */
+    font-size: 1.2rem; /* Adjust the size of the icon */
+    margin-right: 10px; /* Space between icon and input field */
+
+    transition: color var(--transition-duration);
+  }
+
+  body.dark .search-icon-btn {
+    color: var(--search-icon-color);
+}
+
+  
+  /* Search input field */
+  #search-bar {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent; /* Make the input field blend with the background */
+    color: var(--search-bar-color);
+
+    transition: color var(--transition-duration);
+  }
+
+  body.dark #search-bar {
+    color: var(--text-color-light);
+}
+
+  
+  /* Placeholder styling */
+  #search-bar::placeholder {
+    color: #444746;
+    font-family: sans-serif;
+
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+
+  body.dark #search-bar::placeholder {
+    color: var(--search-icon-color);
+}
+
+
+  /* Add this for the parent container */
+#search:focus-within {
+    background-color: #ffffff; /* Change the color when a child is focused */
+    transition: background-color 0s; /* Smooth transition */
+    box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #search-bar:focus{
+  background-color: #ffffff;
+  transition: 0.3s;
+  }
+
+  body.dark #search-bar:focus {
+    background-color: var(--search-bar-bg-color);
+}
+
+
+  /* Hide the clear button by default */
+  #clear-btn.hidden {
+    display: none;
+  }
+  
+  #clear-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+
+  body.dark #clear-btn {
+    fill: var(--search-icon-color); /* SVG elements like <path> or <circle> often rely on the fill property for their color */
+}
+
+
+/* Date filter section */
+.date-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    width: 40%;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--date-bg-light_mode);
+    color: var(--date-txt-light_mode-color);
+
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+body.dark .date-form {
+    background-color: var(--bg-color-grey);
+    color: var(--date-txt-dark_mode-color);
+    color-scheme: dark;
+}
+
+
+
+
+/* Add a theme changing effect*/
+.theme-toggle {
+    display: flex; /* Ensure the content inside the button uses flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-color: var(--white);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem; /* Ensure the emoji/icon size fits well */
+    line-height: 1; /* Prevent any extra vertical spacing */
+
+    /* Add transition for smooth effect */
+    
+    transition: background-color var(--transition-duration);
+}
+
+body.dark .theme-toggle {
+    background-color: var(--logo-bg-color-dark);
+}
+
+.theme-toggle:hover {
+  background-color: #999999; /* Change background color on hover */
+}
+
+body.dark .theme-toggle:hover {
+    background-color: #515151; /* Change background color on hover */
+  }
+
+.theme-toggle .icon {
+    transition: transform var(--transition-duration);
+}
+
+body.dark .theme-toggle .icon {
+    transform: rotate(180deg);
+}
+
+
+
+
+/*Todo app body*/
+  /* Your todo-app class (unchanged) */
+  .todo-app {
+    background-color: var(--white);
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Explicit width */
+    height: 350px; /* Explicit height */
+    border-radius: 8px; /* This will still have the border-radius applied to the inner content */
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* Add scrolling for overflow content */
+  }
+
+  .individual-task-containers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+    min-height: 200px;
+    max-width: 280px;
+    max-height: 200px;
+    background-color: var(--search-bg-color);
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+
+    word-wrap: break-word; /* Ensure words break at boundaries */
+    white-space: normal; /* Allow multi-line wrapping */
+    text-align: left; /* Optional, aligns text to the left */
+
+    transition: background-color var(--transition-duration);
+  }
+
+  body.dark .individual-task-containers {
+    background-color: var(--individual-containers);
+  }
+
+
+
+
+  /* Wrapper with content */
+ .todo-app-wrapper {
+    margin: 60px;
+    position: relative;
+    display: inline-block;
+    padding: 2.5px; /* Padding for content */
+    z-index: 0;
+  }
+  
+  /* Red border */
+  .borderRed, .borderYellow, .borderGreen, .borderBlue {
+    position: absolute;
+    width: 50%; /* Adjust size for each color block */
+    height: 100%;
+    z-index: -1; /* Behind the content */
+  }
+  
+  /* Red border positioned top-left */
+  .borderRed {
+    border-radius: 18px 0px 0px 0px;
+    height: 70%;
+    width: 40%;
+    top: 0;
+    left: 0;
+    background-color: red;
+  }
+  
+  /* Yellow border positioned top-right */
+  .borderYellow {
+    border-radius: 0px 18px 0px 0px;
+    top: 0;
+    right: 0;
+    background-color: #ffbf0f;
+    height: 60%; /* For smaller block */
+    width: 60%;
+  }
+  
+  /* Green border positioned bottom-left */
+  .borderBlue {
+    border-radius: 0px 0px 0px 18px;
+    bottom: 0;
+    left: 0;
+    background-color: #4b91ec;
+    width: 60%; /* Adjust size */
+    height: 60%; /* Smaller block */
+  }
+  
+  /* Blue border positioned bottom-right */
+  .borderGreen {
+    border-radius: 0px 0px 18px 0px;
+    bottom: 0;
+    right: 0;
+    background-color: #45af62;
+    height: 40%;
+    width: 40%;
+  }
+  
+
+
+
+  /* Content area */
+  .content {
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+  /* header line under every category */
+  hr{
+    width: 200px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+
+
+
+/* Golbal button definition */
+.btn {
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  color: var(--white);
+  background-color: #1a73e8;
+  border-radius: 20px;
+  border: none;
+  font-family: sans-serif;
+
+  /* Add transition for smooth effect */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #185abc;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.large-btn {
+  width: 60%;
+  height: 55px;
+  font-size: 1.2rem;
+  align-self: center;
+  justify-self: center;
+  border-radius: 25px;
+  font-family: sans-serif;
+}
+
+.close-task-form-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.task-form {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*background-color: var(--white);*/
+  border-radius: 5px;
+  padding: 15px;
+  width: 300px;
+  height: 350px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  z-index: 1;
+}
+
+.task-form-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-form-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.task-form-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.task-form-label,
+#title-input,
+#date-input,
+#description-input {
+  display: block;
+}
+
+.task-form-label {
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#title-input,
+#date-input,
+#description-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.description {
+  max-width: 250px; /* Optional: Enforce line width for consistency */
+  display: block; /* Ensure it behaves like a block element */
+
+  /*white-space: nowrap;  Prevent wrapping
+  overflow: hidden; Hide overflow
+  text-overflow: ellipsis; Add "..." for long text*/
+}
+
+.expandable-text {
+  cursor: pointer; /* Show pointer to indicate it's clickable */
+  color: var(--text-color-dark); /* Optional: Change color */
+  text-decoration: underline; /* Optional: Add underline */
+}
+  
+
+
+
+/* Base styles for confirm-close-dialog */
+#confirm-close-dialog {
+    padding: 10px;
+    margin: 120px auto;
+    border-radius: 15px;
+    background-color: var(--bg-color-light); /* Light theme background by default */
+    color: var(--text-color-dark); /* Light theme text color by default */
+
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+  
+  /* Button container for the confirm-close-dialog */
+  .confirm-close-dialog-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* Dark theme styling for confirm-close-dialog */
+  body.dark #confirm-close-dialog {
+    background-color: var(--bg-color-dark); /* Dark theme background */
+    color: var(--text-color-light); /* Dark theme text color */
+  }
+
+.discard-message-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+}
+
+
+
+
+#tasks-container {
+    height: 100%;
+    overflow-y:scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 0;
+    padding: 0;
+    margin-top: -15px;
+    /*margin-bottom: -15px;*/
+  }
+
+/* Hide the up and down arrow buttons */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Adjust the width of the scrollbar */
+    background-color: var(--scrollbar-bg-light_mode-color); /* Background color for the track */
+    border-radius: 50px; /* Round the scrollbar edges */
+
+    transition: background-color var(--transition-duration);
+}
+
+body.dark ::-webkit-scrollbar {
+    background-color: var(--scrollbar-bg-dark_mode-color);
+}
+
+/* The track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: var(--white); /* Set the track background color */
+    border-radius: 50px; /* Round the edges */
+
+    transition: background-color var(--transition-duration);
+}
+
+body.dark ::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-bg-dark_mode-color);
+}
+
+/* The thumb (scroll indicator) */
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-light_mode-color); /* Color of the thumb */
+    border-radius: 50px; /* Make the thumb rounded */
+    border: 2px solid #ffffff; /* Add a gap between thumb and track */
+
+    transition: border var(--transition-duration);
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+    border: 2px solid var(--scrollbar-bg-dark_mode-color)
+}
+
+/* Add hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darken thumb color on hover */
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+    background: #b7b7b7; /* Darken thumb color on hover */
+}
+
+.completed {
+    color:green;
+
+    transition: color var(--transition-duration);
+}
+
+body.dark .completed {
+    color: #15e167;
+}
+
+.not-completed {
+    color:red;
+
+    transition: color var(--transition-duration);
+}
+
+body.dark .not-completed {
+    color: #ff3434;
+}
+
+
+.task {
+  margin: 5px 0;
+  font-family: sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 344px) {
+  .todo-app,
+  .task-form {
+    border-radius: 15px;
+    width: 400px;
+    height: 600px; /* This height is applied when the screen width is at least 576px */
+    background-color: var(--light-grey); /* Use the light theme background */
+    color: var(--text-color-dark); /* Use the light theme text color */
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+
+  body.dark .task-form {
+    background-color: var(--todo-form-dark); /* Use the dark theme background */
+    color: var(--text-color-light); /* Use the dark theme text color */
+  }
+
+  body.dark .todo-app {
+    background-color: var(--todo-app-dark); /* Use the dark theme background */
+    color: var(--text-color-light); /* Use the dark theme text color */
+  }
+
+  .task-form-label {
+    font-size: 1.5rem;
+  }
+
+  #title-input,
+  #date-input {
+    height: 2rem;
+    background-color: var(--search-bg-color);
+  }
+
+  #title-input,
+  #date-input,
+  #description-input {
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: var(--search-bg-color);
+    border: 2px solid black;
+    border-radius: 3px;
+  }
+}
+
+  
+
+
+
+
+
+/* Background shapes and animation */
+  /* Shape: Circle */
+  .shape-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 6s infinite ease-in-out;
+  }
+  
+  /* Adding colors */
+  .shape-blue {
+    background-color: #4285F4; /* Google blue */
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 10%;
+    z-index: -1;
+    animation-duration: 9s;
+  }
+  
+  .shape-red {
+    background-color: #EA4335; /* Google red */
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 60%;
+    z-index: -1;
+    animation-duration: 10s;
+  }
+  
+  .shape-green {
+    background-color: #34A853; /* Google green */
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    left: 30%;
+    z-index: -1;
+    animation-duration: 8s;
+  }
+  
+  .shape-yellow {
+    background-color: #FBBC05; /* Google yellow */
+    width: 120px;
+    height: 120px;
+    top: 25%;
+    left: 84%;
+    z-index: -1;
+    animation-duration: 14s;
+  }
+
+
+
+  /* Adding colors for bottom */
+  .shape-blue-bottom {
+    background-color: #4285F4; /* Google blue */
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    right: 10%;
+    z-index: -1;
+    animation-duration: 11s;
+  }
+  
+  .shape-red/*-bottom*/ {
+    background-color: #EA4335; /* Google red */
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 60%;
+    z-index: -1;
+    animation-duration: 10s;
+  }
+  
+  .shape-green/*-bottom*/ {
+    background-color: #34A853; /* Google green */
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    left: 30%;
+    z-index: -1;
+    animation-duration: 8s;
+  }
+  
+  .shape-yellow-bottom {
+    background-color: #FBBC05; /* Google yellow */
+    width: 120px;
+    height: 120px;
+    bottom: 20%;
+    right: 84%;
+    z-index: -1;
+    animation-duration: 13s;
+  }
+
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-10px, -5px); /* Left-Up */
+    }
+    50% {
+      transform: translate(-5px, 0px); /* Right-Down */
+    }
+    75% {
+      transform: translate(-10px, 5px); /* Left-Down */
+    }
+  }
+
+
+
+/* 3D Stripes (not ready yet) */
+/*
+.stripe-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;  
+    height: 500px;
+}
+
+.stripe-path {
+fill: none;
+stroke: #4285F4;
+stroke-width: 4;
+vector-effect: non-scaling stroke;
+opacity: 0.8;
+}
+*/
+
+
+
+
+
+
+
+
+/* App's responsiveness on other devices (not ready yet) */
